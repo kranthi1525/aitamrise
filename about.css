@@ -1088,8 +1088,42 @@ section {
     margin-bottom: 24px;
 }
 
+.footer-column h3,
+.footer-brand h3 {
+  position: relative;
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+}
+
+.footer-column h3::after,
+.footer-brand h3::after {
+  content: "";
+  display: block;
+  width: 70%;
+  height: 3px;
+  background: #e0e0e0; /* grey base */
+  position: absolute;
+  margin-top: 30px;
+  left: 0;
+  bottom: 0;
+}
+
+.footer-column h3::before,
+.footer-brand h3::before {
+  content: "";
+  display: block;
+  width: 50px; /* orange line length */
+  height: 3px;
+  background: #ff6b35; /* orange */
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
 .footer-links {
     list-style: none;
+    padding: 0;
 }
 
 .footer-links li {
