@@ -20,12 +20,13 @@
           <li><a href="#process">Incubation Process</a></li>
           <li><a href="#focus-areas"> Focus Areas</a></li>
           <li><a href="#testimonials">Testimonials </a></li>
+          <li><a href="portfolio.html">Portfolio </a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <div class="btn_container">
-            <!-- <button class="login_but but">Login</button> -->
+        <!-- <div class="btn_container">
+            <button class="login_but but">Login</button>
             <button class="Apply_but but">Apply Now</button>
-        </div>
+        </div> -->
         <button class="menu-toggle">☰</button>
       </div>
     </div>
@@ -64,6 +65,16 @@
 
     });
 
+    //navbar color should change on scroll
+    window.addEventListener('scroll', () => {
+      // console.log(window.scrollY);
+      //change on 100vh
+      if (window.scrollY > 800) {
+        mainNav.classList.add('scrolled');
+      } else {
+        mainNav.classList.remove('scrolled');
+      }
+    });
     
 
     
@@ -122,7 +133,6 @@
     </div>
   </section>
   <script>
-    // Carousel functionality
     const slides = document.querySelectorAll('.carousel-slide');
     const dots = document.querySelectorAll('.dot');
     let currentSlide = 0;
@@ -146,7 +156,7 @@
     }
 
     function startCarousel() {
-      slideInterval = setInterval(nextSlide, 6000); // Change slide every 4 seconds
+      slideInterval = setInterval(nextSlide, 6000); 
     }
 
     function stopCarousel() {
@@ -230,7 +240,8 @@
                 </div>
             </div>
       </div>
-                  <button class="Apply_but but" style="margin-top: 40px;">Know More</button>
+      <button class="Apply_but but" style="margin-top: 40px;" onclick="window.location.href='about.html'">Know More</button>
+
 
   </section>
   <section class="process" id="process">
