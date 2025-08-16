@@ -252,7 +252,7 @@ section {
 
 .features-description {
     font-size: 1.125rem;
-    text-align: justify;
+    align-items: center;
     color: #718096;
     line-height: 1.6;
 }
@@ -300,7 +300,6 @@ section {
 .portfolio-description{
      font-size: 16px;
     color: #4b5563;
-    /* text-align: justify; */
     margin-bottom: 20px;
 }
 
