@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply Now – Registration | AITAM RISE</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      
+      
+      .container {
+        max-width: 1400px;
+        margin: 50px auto;
+        padding: 40px 20px;
+      }
+
+      .form-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+
+      .form-header h1 {
+        font-size: 2.5rem;
+        color: #fc5833;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .form-header p {
+        color: #666;
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .registration-form {
+        background: #ffffff;
+        border-radius: 12px;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+      }
+
+      .form-sections {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        min-height: 700px;
+      }
+
+      .form-section {
+        padding: 48px 40px;
+      }
+
+      .personal-section {
+        background: #ffffff;
+        border-right: 1px solid #e9ecef;
+      }
+
+      .company-section {
+        background: #fafbfc;
+      }
+
+      .section-header {
+        margin-bottom: 32px;
+        padding-bottom: 16px;
+        border-bottom: 2px solid #fc5833;
+      }
+
+      .section-header h2 {
+        font-size: 1.5rem;
+        color: #2c3e50;
+        font-weight: 600;
+        margin-bottom: 4px;
+      }
+
+      .section-header p {
+        color: #6c757d;
+        font-size: 0.95rem;
+      }
+
+      .form-group {
+        margin-bottom: 24px;
+      }
+
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      label {
+        display: block;
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 6px;
+        font-size: 0.95rem;
+      }
+
+      .required {
+        color: #dc3545;
+        font-size: 0.8rem;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="url"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 16px;
+        border: 1px solid #ced4da;
+        border-radius: 6px;
+        font-size: 1rem;
+        background-color: #fff;
+        transition: all 0.2s ease;
+        font-family: inherit;
+      }
+
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="tel"]:focus,
+      input[type="url"]:focus,
+      select:focus,
+      textarea:focus {
+        outline: none;
+        border-color: #fc5833;
+        box-shadow: 0 0 0 2px rgba(252, 88, 51, 0.15);
+      }
+
+      select {
+        cursor: pointer;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+        background-position: right 12px center;
+        background-repeat: no-repeat;
+        background-size: 16px;
+        padding-right: 40px;
+        appearance: none;
+      }
+
+      textarea {
+        resize: vertical;
+        min-height: 80px;
+      }
+
+      .char-count {
+        font-size: 0.85rem;
+        color: #6c757d;
+        text-align: right;
+        margin-top: 4px;
+      }
+
+      .submit-section {
+        background: #f8f9fa;
+        padding: 32px 40px;
+        text-align: center;
+        border-top: 1px solid #e9ecef;
+      }
+
+      .submit-btn {
+        background-color: #fc5833;
+        color: white;
+        border: none;
+        padding: 14px 32px;
+        font-size: 1rem;
+        font-weight: 500;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        min-width: 160px;
+      }
+
+      .submit-btn:hover {
+        background-color: #e14a24;
+        transform: translateY(-1px);
+        box-shadow: 0 4px 12px rgba(252, 88, 51, 0.25);
+      }
+
+      .submit-btn:active {
+        transform: translateY(0);
+      }
+
+      .submit-btn:disabled {
+        background-color: #6c757d;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .form-note {
+        margin-top: 16px;
+        color: #6c757d;
+        font-size: 0.9rem;
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 992px) {
+        .container {
+          padding: 30px 15px;
+        }
+
+        .form-sections {
+          grid-template-columns: 1fr;
+        }
+
+        .personal-section {
+          border-right: none;
+          border-bottom: 1px solid #e9ecef;
+        }
+
+        .company-section {
+          background: #ffffff;
+        }
+
+        .form-section {
+          padding: 32px 24px;
+        }
+
+        .submit-section {
+          padding: 24px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .form-header h1 {
+          font-size: 2rem;
+        }
+
+        .form-row {
+          grid-template-columns: 1fr;
+          gap: 0;
+        }
+
+        .form-section {
+          padding: 24px 20px;
+        }
+
+        .section-header h2 {
+          font-size: 1.3rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 20px 10px;
+        }
+
+        .form-header h1 {
+          font-size: 1.8rem;
+        }
+
+        .form-section {
+          padding: 20px 16px;
+        }
+
+        .submit-btn {
+          width: 100%;
+          padding: 16px;
+        }
+      }
+
+      /* Professional enhancements */
+      .form-group:last-child {
+        margin-bottom: 0;
+      }
+
+      input[type="text"]:invalid,
+      input[type="email"]:invalid,
+      input[type="tel"]:invalid,
+      select:invalid,
+      textarea:invalid {
+        border-color: #dc3545;
+      }
+
+      input[type="text"]:valid,
+      input[type="email"]:valid,
+      input[type="tel"]:valid,
+      select:valid,
+      textarea:valid {
+        border-color: #28a745;
+      }
+
+      .error-message {
+        color: #dc3545;
+        font-size: 0.85rem;
+        margin-top: 4px;
+        display: none;
+      }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+    
+    <div class="main-nav">
+      <div class="main-nav-container">
+        <img src="images/logo-vertical.png" alt="Aitam Incubator" class="logo" />
+        <ul class="nav-links">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="#process">Incubation Process</a></li>
+          <li><a href="#focus-areas"> Focus Areas</a></li>
+          <li><a href="#testimonials">Testimonials </a></li>
+          <li><a href="portfolio.html">Portfolio </a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <!-- <div class="btn_container">
+            <button class="login_but but">Login</button>
+            <button class="Apply_but but">Apply Now</button>
+        </div> -->
+        <button class="menu-toggle">☰</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="mobile-menu">
+    <button class="close-menu">✕</button>
+    <ul>
+          <li><a href="index.html" >Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#process">Incubation Process</a></li>
+          <li><a href="#focus-areas"> Focus Areas</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+          
+           <li style="display: flex; justify-content: center;"> <button class="Apply_but but">Apply Now</button></li>
+
+
+    </ul>
+    
+  </div>
+
+  <script>
+    const mainNav = document.querySelector('.main-nav');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const closeMenu = document.querySelector('.close-menu');
+    const button_container = document.querySelector('.btn_container');
+
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.add('active');
+    });
+
+    closeMenu.addEventListener('click', () => {
+      mobileMenu.classList.remove('active');
+
+    });
+
+    
+    mainNav.classList.add('scrolled');
+      
+
+    
+  </script>
+
+
+  <div class="container">
+    <div class="form-header">
+      <h1>Application Form</h1>
+      <p>Join AITAM RISE startup incubation program and accelerate your entrepreneurial journey with our comprehensive support system.</p>
+    </div>
+
+    <form class="registration-form" id="registrationForm" action="#" method="post">
+      <div class="form-sections">
+        <!-- Personal Details Section -->
+        <div class="form-section personal-section">
+          <div class="section-header">
+            <h2>Personal Information</h2>
+            <p>Please provide your personal and contact details</p>
+          </div>
+          
+          <div class="form-group">
+            <label for="founderNames">Founder Name <span class="required">*</span></label>
+            <input type="text" id="founderNames" name="founderNames" required>
+            <div class="error-message" id="founderNamesError">Please enter founder name</div>
+          </div>
+          <div class="form-group">
+            <label for="founderNames">CO - Founder Name <span class="required">*</span></label>
+            <input type="text" id="founderNames" name="founderNames" required>
+            <div class="error-message" id="founderNamesError">Please enter co-founder name</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address <span class="required">*</span></label>
+              <input type="email" id="email" name="email" required>
+              <div class="error-message" id="emailError">Please enter a valid email address</div>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number <span class="required">*</span></label>
+              <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+              <div class="error-message" id="phoneError">Please enter a valid 10-digit phone number</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="location"> State<span class="required">*</span></label>
+            <input type="text" id="location" name="location" required>
+            <div class="error-message" id="locationError">Please enter your location</div>
+          </div>
+
+          <div class="form-group">
+            <label for="location">City<span class="required">*</span></label>
+            <input type="text" id="location" name="location" required>
+            <div class="error-message" id="locationError">Please enter your location</div>
+          </div>
+
+          
+        </div>
+
+        <!-- Company Details Section -->
+        <div class="form-section company-section">
+          <div class="section-header">
+            <h2>Startup Information</h2>
+            <p>Tell us about your startup or business idea</p>
+          </div>
+          
+          <div class="form-group">
+            <label for="startupName">Startup / Idea Name <span class="required">*</span></label>
+            <input type="text" id="startupName" name="startupName" required>
+            <div class="error-message" id="startupNameError">Please enter your startup/idea name</div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="stage">Current Stage <span class="required">*</span></label>
+              <select id="stage" name="stage" required>
+                <option value="">Select Stage</option>
+                <option value="Idea">Idea Stage</option>
+                <option value="Prototype">Prototype</option>
+                <option value="Early Revenue">Early Revenue</option>
+                <option value="Scaling">Scaling</option>
+              </select>
+              <div class="error-message" id="stageError">Please select your current stage</div>
+            </div>
+            <div class="form-group">
+              <label for="focusArea">Focus Area <span class="required">*</span></label>
+              <select id="focusArea" name="focusArea" required>
+                <option value="">Select Focus Area</option>
+                <option value="Grassroot">Grassroot Innovation</option>
+                <option value="AgriTech">AgriTech</option>
+                <option value="AI/ML">AI/ML</option>
+                <option value="IoT">Internet of Things</option>
+                <option value="Drones">Drone Technology</option>
+                <option value="Sustainability">Sustainability</option>
+                <option value="Women in STEM">Women in STEM</option>
+                <option value="FinTech">FinTech</option>
+                <option value="HealthTech">HealthTech</option>
+                <option value="EdTech">EdTech</option>
+                <option value="Other">Other</option>
+              </select>
+              <div class="error-message" id="focusAreaError">Please select a focus area</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="problem">Problem Statement <span class="required">*</span></label>
+            <textarea id="problem" name="problem" maxlength="300" required placeholder="Describe the problem you are solving (max 300 characters)"></textarea>
+            <div class="char-count" id="problemCount">0/300</div>
+            <div class="error-message" id="problemError">Please describe the problem you are solving</div>
+          </div>
+
+          <div class="form-group">
+            <label for="solution">Your Solution <span class="required">*</span></label>
+            <textarea id="solution" name="solution" maxlength="300" required placeholder="Briefly describe your solution or approach (max 300 characters)"></textarea>
+            <div class="char-count" id="solutionCount">0/300</div>
+            <div class="error-message" id="solutionError">Please describe your solution</div>
+          </div>
+
+          <div class="form-group">
+            <label for="support">Primary Support Needed <span class="required">*</span></label>
+            <select id="support" name="support" required>
+              <option value="">Select Primary Support</option>
+              <option value="Mentorship">Mentorship & Guidance</option>
+              <option value="Lab Access">Lab Access & Infrastructure</option>
+              <option value="Funding">Funding Support</option>
+              <option value="Networking">Networking Opportunities</option>
+              <option value="Market Access">Market Access</option>
+              <option value="Technical Support">Technical Support</option>
+              <option value="Business Development">Business Development</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="error-message" id="supportError">Please select the primary support you need</div>
+          </div>
+
+          <div class="form-group">
+            <label for="pitchDeck">Pitch Deck / Concept Note (Optional)</label>
+            <input type="url" id="pitchDeck" name="pitchDeck" placeholder="https://drive.google.com/...">
+          </div>
+        </div>
+      </div>
+
+      <div class="submit-section">
+        <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+        <p class="form-note">
+          Your application will be reviewed by our team within 5-7 business days. 
+          We will contact you via email with the next steps in the selection process.
+        </p>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Character counters
+    function setupCharCounter(textareaId, counterId, maxLength) {
+      const textarea = document.getElementById(textareaId);
+      const counter = document.getElementById(counterId);
+      
+      textarea.addEventListener('input', function() {
+        const length = this.value.length;
+        counter.textContent = `${length}/${maxLength}`;
+        
+        if (length > maxLength * 0.9) {
+          counter.style.color = '#dc3545';
+        } else {
+          counter.style.color = '#6c757d';
+        }
+      });
+    }
+
+    setupCharCounter('problem', 'problemCount', 300);
+    setupCharCounter('solution', 'solutionCount', 300);
+
+    // Phone number validation
+    document.getElementById('phone').addEventListener('input', function(e) {
+      this.value = this.value.replace(/\D/g, '').substring(0, 10);
+    });
+
+    // Form validation
+    function validateField(fieldId, errorId, validationFn) {
+      const field = document.getElementById(fieldId);
+      const error = document.getElementById(errorId);
+      
+      field.addEventListener('blur', function() {
+        if (!validationFn(this.value)) {
+          error.style.display = 'block';
+          this.style.borderColor = '#dc3545';
+        } else {
+          error.style.display = 'none';
+          this.style.borderColor = '#28a745';
+        }
+      });
+    }
+
+    // Setup field validations
+    validateField('email', 'emailError', (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
+    validateField('phone', 'phoneError', (value) => /^[0-9]{10}$/.test(value));
+
+    // Form submission
+    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const submitBtn = document.getElementById('submitBtn');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Submitting...';
+      
+      // Simulate form submission
+      setTimeout(() => {
+        alert('Application submitted successfully! We will review your application and get back to you within 5-7 business days.');
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Submit Application';
+        this.reset();
+        
+        // Reset character counters
+        document.getElementById('problemCount').textContent = '0/300';
+        document.getElementById('solutionCount').textContent = '0/300';
+      }, 2000);
+    });
+  </script>
+
+  
+  <footer class="footer">
+        <div class="footer-main">
+            <div class="footer-content">
+                <!-- Brand Column -->
+                <div class="footer-brand">
+                    <div class="footer-logo"><img src="images/Aitam Rise White.png" alt="" style="width: 250px;"></div>
+                    <p class="footer-description">
+                        Transforming innovative ideas into successful startups through world-class mentorship and resources.
+                    </p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Twitter">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Programs Column -->
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#process">Incubatio Process</a></li>
+                        <li><a href="#focus-areas">Focus Area</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="portfolio.html">Portfolio</a></li>
+                        <li><a href="#contact">contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Resources Column -->
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Success Stories</a></li>
+                        <li><a href="#">Events</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+
+                <!-- Company Column -->
+                <div class="footer-column">
+                    <h3>Downloads</h3>
+                    <ul class="footer-links">
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#process">Incubation Process</a></li>
+                        <li><a href="#focus-areas">Focus Areas</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-content">
+                <div class="copyright">
+                    © 2024 AitamRise Incubator. All rights reserved.
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+  </footer>
+
+
+</body>
+</html>
