@@ -827,42 +827,261 @@
             <h2 class="form-title">Send us a Message</h2>
             <p class="form-subtitle">Fill out the form below and we'll get back to you within 24 hours.</p>
             
-            <form>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label class="form-label" for="firstName">First Name</label>
-                        <input type="text" class="form-input" id="firstName" placeholder="John">
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label" for="lastName">Last Name</label>
-                        <input type="text" class="form-input" id="lastName" placeholder="Doe">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="email">Email</label>
-                    <input type="email" class="form-input" id="email" placeholder="john@example.com">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="company">Company/Startup</label>
-                    <input type="text" class="form-input" id="company" placeholder="Your startup name">
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label" for="message">Message</label>
-                    <textarea class="form-textarea" id="message" placeholder="Tell us how we can help you ..."></textarea>
-                </div>
-
-                <button type="submit" class="submit-btn">
-                    Send Message
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M22 2L11 13"></path>
-                        <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
-                    </svg>
-                </button>
-            </form>
+             <form id="contactForm">
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label" for="firstName">First Name</label>
+                <input type="text" class="form-input" id="firstName" name="firstName" placeholder="John" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="lastName">Last Name</label>
+                <input type="text" class="form-input" id="lastName" name="lastName" placeholder="Doe" required>
+            </div>
         </div>
+
+        <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" class="form-input" id="email" name="email" placeholder="john@example.com" required>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="company">Company/Startup</label>
+            <input type="text" class="form-input" id="company" name="company" placeholder="Your startup name">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Tell us how we can help you ..." required></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">
+            <span id="buttonText">
+                Send Message
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 2L11 13"></path>
+                    <path d="M22 2L15 22L11 13L2 9L22 2Z"></path>
+                </svg>
+            </span>
+        </button>
+    </form>
+<style>
+        /* Spinner animation for loading button */
+        @keyframes spin {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+    </style>
+    <script>
+        // Contact Form JavaScript Handler
+        // REPLACE WITH YOUR GOOGLE APPS SCRIPT WEB APP URL
+        const CONTACT_FORM_URL = 'https://script.google.com/macros/s/AKfycbyEvZ3kRsXsyb6zm2yRD2mpk8g_-su9sLN9GNkYSPjCKfjJz7U4pvaARPyqLvLCfrvM1Q/exec';
+
+        // Function to show notification
+        function showNotification(message, type = 'success') {
+          const notification = document.createElement('div');
+          notification.className = `notification ${type}`;
+          notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${type === 'success' ? '#28a745' : '#dc3545'};
+            color: white;
+            padding: 15px 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+            font-family: Arial, sans-serif;
+            max-width: 300px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+          `;
+          notification.textContent = message;
+          document.body.appendChild(notification);
+          
+          // Animate in
+          setTimeout(() => {
+            notification.style.transform = 'translateX(0)';
+          }, 100);
+          
+          // Animate out and remove
+          setTimeout(() => {
+            notification.style.transform = 'translateX(100%)';
+            setTimeout(() => {
+              if (notification.parentNode) {
+                document.body.removeChild(notification);
+              }
+            }, 300);
+          }, 4000);
+        }
+
+        // Function to submit contact form data
+        function submitContactForm(formData) {
+          return new Promise((resolve, reject) => {
+            try {
+              // Create hidden form for submission
+              const form = document.createElement('form');
+              form.method = 'POST';
+              form.action = CONTACT_FORM_URL;
+              form.target = 'hidden_iframe';
+              form.style.display = 'none';
+
+              // Create hidden iframe
+              const iframe = document.createElement('iframe');
+              iframe.name = 'hidden_iframe';
+              iframe.style.display = 'none';
+              
+              // Prepare data
+              const dataToSend = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                company: formData.get('company') || '',
+                message: formData.get('message')
+              };
+
+              // Create hidden input with JSON data
+              const jsonInput = document.createElement('input');
+              jsonInput.type = 'hidden';
+              jsonInput.name = 'jsonData';
+              jsonInput.value = JSON.stringify(dataToSend);
+              form.appendChild(jsonInput);
+
+              // Handle responses
+              let resolved = false;
+              const cleanup = () => {
+                if (form.parentNode) document.body.removeChild(form);
+                if (iframe.parentNode) document.body.removeChild(iframe);
+              };
+
+              iframe.onload = function() {
+                if (!resolved) {
+                  resolved = true;
+                  setTimeout(() => {
+                    cleanup();
+                    resolve({ status: 'success' });
+                  }, 1000);
+                }
+              };
+
+              iframe.onerror = function() {
+                if (!resolved) {
+                  resolved = true;
+                  cleanup();
+                  reject(new Error('Submission failed'));
+                }
+              };
+
+              // Timeout fallback
+              setTimeout(() => {
+                if (!resolved) {
+                  resolved = true;
+                  cleanup();
+                  resolve({ status: 'success' });
+                }
+              }, 5000);
+
+              // Submit form
+              document.body.appendChild(iframe);
+              document.body.appendChild(form);
+              form.submit();
+
+            } catch (error) {
+              console.error('Form submission error:', error);
+              reject(error);
+            }
+          });
+        }
+
+        // Form validation functions
+        function validateEmail(email) {
+          const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          return re.test(email);
+        }
+
+        function validateForm(formData) {
+          const errors = [];
+          
+          if (!formData.get('firstName')?.trim()) {
+            errors.push('First name is required');
+          }
+          
+          if (!formData.get('lastName')?.trim()) {
+            errors.push('Last name is required');
+          }
+          
+          if (!formData.get('email')?.trim()) {
+            errors.push('Email is required');
+          } else if (!validateEmail(formData.get('email'))) {
+            errors.push('Please enter a valid email address');
+          }
+          
+          if (!formData.get('message')?.trim()) {
+            errors.push('Message is required');
+          }
+          
+          return errors;
+        }
+
+        // Initialize form handling when DOM is ready
+        document.addEventListener('DOMContentLoaded', function() {
+          const form = document.getElementById('contactForm');
+          
+          if (!form) {
+            console.error('Contact form not found');
+            return;
+          }
+          
+          // Handle form submission
+          form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('.submit-btn');
+            const buttonText = document.getElementById('buttonText');
+            const originalContent = buttonText.innerHTML;
+            
+            try {
+              // Show loading state
+              submitBtn.disabled = true;
+              buttonText.innerHTML = `
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="animation: spin 1s linear infinite;">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="M16 12l-4-4-4 4"></path>
+                </svg>
+                Sending...
+              `;
+              
+              // Get form data
+              const formData = new FormData(this);
+              
+              // Validate form
+              const errors = validateForm(formData);
+              if (errors.length > 0) {
+                throw new Error(errors.join(', '));
+              }
+              
+              // Submit form
+              await submitContactForm(formData);
+              
+              // Success
+              showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
+              
+              // Reset form
+              this.reset();
+              
+            } catch (error) {
+              console.error('Submission error:', error);
+              showNotification(error.message || 'Failed to send message. Please try again.', 'error');
+            } finally {
+              // Reset button
+              submitBtn.disabled = false;
+              buttonText.innerHTML = originalContent;
+            }
+          });
+        });
+    </script>
+        </div>
+
+
 
         <!-- Contact Info -->
         <div class="contact-info" id="contact">
