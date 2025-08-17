@@ -958,6 +958,13 @@ section {
     gap: 12px;
     flex-wrap: wrap;
 }
+.stat_logos{
+      display: flex;
+      gap: 10px;
+    }
+    .sgd-goal{
+      width: 50px;
+    }
 
 .stat {
     text-align: center;
