@@ -366,213 +366,408 @@
       <p>Join AITAM RISE startup incubation program and accelerate your entrepreneurial journey with our comprehensive support system.</p>
     </div>
 
-    <form class="registration-form" id="registrationForm" action="#" method="post">
-      <div class="form-sections">
-        <!-- Personal Details Section -->
-        <div class="form-section personal-section">
-          <div class="section-header">
-            <h2>Personal Information</h2>
-            <p>Please provide your personal and contact details</p>
-          </div>
-          
-          <div class="form-group">
-            <label for="founderNames">Founder Name <span class="required">*</span></label>
-            <input type="text" id="founderNames" name="founderNames" required>
-            <div class="error-message" id="founderNamesError">Please enter founder name</div>
-          </div>
-          <div class="form-group">
-            <label for="founderNames">CO - Founder Name <span class="required">*</span></label>
-            <input type="text" id="founderNames" name="founderNames" required>
-            <div class="error-message" id="founderNamesError">Please enter co-founder name</div>
-          </div>
+    <!-- HTML Section - Fixed all duplications and names -->
+<form class="registration-form" id="registrationForm" action="#" method="post">
+  <div class="form-sections">
+    <!-- Personal Details Section -->
+    <div class="form-section personal-section">
+      <div class="section-header">
+        <h2>Personal Information</h2>
+        <p>Please provide your personal and contact details</p>
+      </div>
+      
+      <div class="form-group">
+        <label for="founderName">Founder Name <span class="required">*</span></label>
+        <input type="text" id="founderName" name="founderName" required>
+        <div class="error-message" id="founderNameError">Please enter founder name</div>
+      </div>
+      <div class="form-group">
+        <label for="coFounderName">Co - Founder Name</label>
+        <input type="text" id="coFounderName" name="coFounderName">
+        <div class="error-message" id="coFounderNameError">Please enter co-founder name</div>
+      </div>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email Address <span class="required">*</span></label>
-              <input type="email" id="email" name="email" required>
-              <div class="error-message" id="emailError">Please enter a valid email address</div>
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number <span class="required">*</span></label>
-              <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
-              <div class="error-message" id="phoneError">Please enter a valid 10-digit phone number</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="location"> State<span class="required">*</span></label>
-            <input type="text" id="location" name="location" required>
-            <div class="error-message" id="locationError">Please enter your location</div>
-          </div>
-
-          <div class="form-group">
-            <label for="location">City<span class="required">*</span></label>
-            <input type="text" id="location" name="location" required>
-            <div class="error-message" id="locationError">Please enter your location</div>
-          </div>
-
-          
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email Address <span class="required">*</span></label>
+          <input type="email" id="email" name="email" required>
+          <div class="error-message" id="emailError">Please enter a valid email address</div>
         </div>
-
-        <!-- Company Details Section -->
-        <div class="form-section company-section">
-          <div class="section-header">
-            <h2>Startup Information</h2>
-            <p>Tell us about your startup or business idea</p>
-          </div>
-          
-          <div class="form-group">
-            <label for="startupName">Startup / Idea Name <span class="required">*</span></label>
-            <input type="text" id="startupName" name="startupName" required>
-            <div class="error-message" id="startupNameError">Please enter your startup/idea name</div>
-          </div>
-
-          <div class="form-row">
-            <div class="form-group">
-              <label for="stage">Current Stage <span class="required">*</span></label>
-              <select id="stage" name="stage" required>
-                <option value="">Select Stage</option>
-                <option value="Idea">Idea Stage</option>
-                <option value="Prototype">Prototype</option>
-                <option value="Early Revenue">Early Revenue</option>
-                <option value="Scaling">Scaling</option>
-              </select>
-              <div class="error-message" id="stageError">Please select your current stage</div>
-            </div>
-            <div class="form-group">
-              <label for="focusArea">Focus Area <span class="required">*</span></label>
-              <select id="focusArea" name="focusArea" required>
-                <option value="">Select Focus Area</option>
-                <option value="Grassroot">Grassroot Innovation</option>
-                <option value="AgriTech">AgriTech</option>
-                <option value="AI/ML">AI/ML</option>
-                <option value="IoT">Internet of Things</option>
-                <option value="Drones">Drone Technology</option>
-                <option value="Sustainability">Sustainability</option>
-                <option value="Women in STEM">Women in STEM</option>
-                <option value="FinTech">FinTech</option>
-                <option value="HealthTech">HealthTech</option>
-                <option value="EdTech">EdTech</option>
-                <option value="Other">Other</option>
-              </select>
-              <div class="error-message" id="focusAreaError">Please select a focus area</div>
-            </div>
-          </div>
-
-          <div class="form-group">
-            <label for="problem">Problem Statement <span class="required">*</span></label>
-            <textarea id="problem" name="problem" maxlength="300" required placeholder="Describe the problem you are solving (max 300 characters)"></textarea>
-            <div class="char-count" id="problemCount">0/300</div>
-            <div class="error-message" id="problemError">Please describe the problem you are solving</div>
-          </div>
-
-          <div class="form-group">
-            <label for="solution">Your Solution <span class="required">*</span></label>
-            <textarea id="solution" name="solution" maxlength="300" required placeholder="Briefly describe your solution or approach (max 300 characters)"></textarea>
-            <div class="char-count" id="solutionCount">0/300</div>
-            <div class="error-message" id="solutionError">Please describe your solution</div>
-          </div>
-
-          <div class="form-group">
-            <label for="support">Primary Support Needed <span class="required">*</span></label>
-            <select id="support" name="support" required>
-              <option value="">Select Primary Support</option>
-              <option value="Mentorship">Mentorship & Guidance</option>
-              <option value="Lab Access">Lab Access & Infrastructure</option>
-              <option value="Funding">Funding Support</option>
-              <option value="Networking">Networking Opportunities</option>
-              <option value="Market Access">Market Access</option>
-              <option value="Technical Support">Technical Support</option>
-              <option value="Business Development">Business Development</option>
-              <option value="Other">Other</option>
-            </select>
-            <div class="error-message" id="supportError">Please select the primary support you need</div>
-          </div>
-
-          <div class="form-group">
-            <label for="pitchDeck">Pitch Deck / Concept Note (Optional)</label>
-            <input type="url" id="pitchDeck" name="pitchDeck" placeholder="https://drive.google.com/...">
-          </div>
+        <div class="form-group">
+          <label for="phone">Phone Number <span class="required">*</span></label>
+          <input type="tel" id="phone" name="phone" required pattern="[0-9]{10}">
+          <div class="error-message" id="phoneError">Please enter a valid 10-digit phone number</div>
         </div>
       </div>
 
-      <div class="submit-section">
-        <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
-        <p class="form-note">
-          Your application will be reviewed by our team within 5-7 business days. 
-          We will contact you via email with the next steps in the selection process.
-        </p>
+      <div class="form-group">
+        <label for="state">State <span class="required">*</span></label>
+        <input type="text" id="state" name="state" required>
+        <div class="error-message" id="stateError">Please enter your state</div>
       </div>
-    </form>
+
+      <div class="form-group">
+        <label for="city">City <span class="required">*</span></label>
+        <input type="text" id="city" name="city" required>
+        <div class="error-message" id="cityError">Please enter your city</div>
+      </div>
+    </div>
+
+    <!-- Company Details Section -->
+    <div class="form-section company-section">
+      <div class="section-header">
+        <h2>Startup Information</h2>
+        <p>Tell us about your startup or business idea</p>
+      </div>
+      
+      <div class="form-group">
+        <label for="startupName">Startup / Idea Name <span class="required">*</span></label>
+        <input type="text" id="startupName" name="startupName" required>
+        <div class="error-message" id="startupNameError">Please enter your startup/idea name</div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="stage">Current Stage <span class="required">*</span></label>
+          <select id="stage" name="stage" required>
+            <option value="">Select Stage</option>
+            <option value="Idea">Idea Stage</option>
+            <option value="Prototype">Prototype</option>
+            <option value="Early Revenue">Early Revenue</option>
+            <option value="Scaling">Scaling</option>
+          </select>
+          <div class="error-message" id="stageError">Please select your current stage</div>
+        </div>
+        <div class="form-group">
+          <label for="focusArea">Focus Area <span class="required">*</span></label>
+          <select id="focusArea" name="focusArea" required>
+            <option value="">Select Focus Area</option>
+            <option value="Grassroot">Grassroot Innovation</option>
+            <option value="AgriTech">AgriTech</option>
+            <option value="AI/ML">AI/ML</option>
+            <option value="IoT">Internet of Things</option>
+            <option value="Drones">Drone Technology</option>
+            <option value="Sustainability">Sustainability</option>
+            <option value="Women in STEM">Women in STEM</option>
+            <option value="FinTech">FinTech</option>
+            <option value="HealthTech">HealthTech</option>
+            <option value="EdTech">EdTech</option>
+            <option value="Other">Other</option>
+          </select>
+          <div class="error-message" id="focusAreaError">Please select a focus area</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="problem">Problem Statement <span class="required">*</span></label>
+        <textarea id="problem" name="problem" maxlength="300" required placeholder="Describe the problem you are solving (max 300 characters)"></textarea>
+        <div class="char-count" id="problemCount">0/300</div>
+        <div class="error-message" id="problemError">Please describe the problem you are solving</div>
+      </div>
+
+      <div class="form-group">
+        <label for="solution">Your Solution <span class="required">*</span></label>
+        <textarea id="solution" name="solution" maxlength="300" required placeholder="Briefly describe your solution or approach (max 300 characters)"></textarea>
+        <div class="char-count" id="solutionCount">0/300</div>
+        <div class="error-message" id="solutionError">Please describe your solution</div>
+      </div>
+
+      <div class="form-group">
+        <label for="support">Primary Support Needed <span class="required">*</span></label>
+        <select id="support" name="support" required>
+          <option value="">Select Primary Support</option>
+          <option value="Mentorship">Mentorship & Guidance</option>
+          <option value="Lab Access">Lab Access & Infrastructure</option>
+          <option value="Funding">Funding Support</option>
+          <option value="Networking">Networking Opportunities</option>
+          <option value="Market Access">Market Access</option>
+          <option value="Technical Support">Technical Support</option>
+          <option value="Business Development">Business Development</option>
+          <option value="Other">Other</option>
+        </select>
+        <div class="error-message" id="supportError">Please select the primary support you need</div>
+      </div>
+
+      <div class="form-group">
+        <label for="pitchDeck">Pitch Deck / Concept Note (Optional)</label>
+        <input type="url" id="pitchDeck" name="pitchDeck" placeholder="https://drive.google.com/...">
+      </div>
+    </div>
   </div>
 
-  <script>
-    // Character counters
-    function setupCharCounter(textareaId, counterId, maxLength) {
-      const textarea = document.getElementById(textareaId);
-      const counter = document.getElementById(counterId);
+  <div class="submit-section">
+    <button type="submit" class="submit-btn" id="submitBtn">Submit Application</button>
+    <p class="form-note">
+      Your application will be reviewed by our team within 5-7 business days. 
+      We will contact you via email with the next steps in the selection process.
+    </p>
+  </div>
+</form>
+
+<script>
+    // REPLACE THIS WITH YOUR ACTUAL GOOGLE APPS SCRIPT WEB APP URL
+const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzJlFpTmZs5lfNsNd-3pfJiC0xTQRbbiEiyLwfq6qEbYMMls6-F3vGFxL9hsYrvCaJ1/exec';
+
+// Function to show notification
+function showNotification(message, type = 'success') {
+  const notification = document.createElement('div');
+  notification.className = `notification ${type}`;
+  notification.textContent = message;
+  document.body.appendChild(notification);
+  
+  setTimeout(() => notification.classList.add('show'), 100);
+  setTimeout(() => {
+    notification.classList.remove('show');
+    setTimeout(() => {
+      if (notification.parentNode) {
+        document.body.removeChild(notification);
+      }
+    }, 300);
+  }, 4000);
+}
+
+// Function to submit data to Google Sheets using hidden form (bypasses CORS completely)
+function submitToGoogleSheets(formData) {
+  return new Promise((resolve, reject) => {
+    try {
+      // Create a hidden form for submission
+      const form = document.createElement('form');
+      form.method = 'POST';
+      form.action = GOOGLE_SHEETS_URL;
+      form.target = 'hidden_iframe';
+      form.style.display = 'none';
+
+      // Create hidden iframe to receive response
+      const iframe = document.createElement('iframe');
+      iframe.name = 'hidden_iframe';
+      iframe.style.display = 'none';
       
-      textarea.addEventListener('input', function() {
-        const length = this.value.length;
-        counter.textContent = `${length}/${maxLength}`;
-        
-        if (length > maxLength * 0.9) {
-          counter.style.color = '#dc3545';
-        } else {
-          counter.style.color = '#6c757d';
+      // Add form data as hidden inputs
+      const dataToSend = {
+        founderName: formData.get('founderName'),
+        coFounderName: formData.get('coFounderName') || '',
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        state: formData.get('state'),
+        city: formData.get('city'),
+        startupName: formData.get('startupName'),
+        stage: formData.get('stage'),
+        focusArea: formData.get('focusArea'),
+        problem: formData.get('problem'),
+        solution: formData.get('solution'),
+        support: formData.get('support'),
+        pitchDeck: formData.get('pitchDeck') || ''
+      };
+
+      // Create a single hidden input with JSON data
+      const jsonInput = document.createElement('input');
+      jsonInput.type = 'hidden';
+      jsonInput.name = 'jsonData';
+      jsonInput.value = JSON.stringify(dataToSend);
+      form.appendChild(jsonInput);
+
+      // Handle iframe load event
+      let resolved = false;
+      const cleanup = () => {
+        if (form.parentNode) document.body.removeChild(form);
+        if (iframe.parentNode) document.body.removeChild(iframe);
+      };
+
+      iframe.onload = function() {
+        if (!resolved) {
+          resolved = true;
+          setTimeout(() => {
+            cleanup();
+            resolve({ status: 'success' });
+          }, 1000);
         }
-      });
+      };
+
+      iframe.onerror = function() {
+        if (!resolved) {
+          resolved = true;
+          cleanup();
+          reject(new Error('Submission failed'));
+        }
+      };
+
+      // Timeout fallback
+      setTimeout(() => {
+        if (!resolved) {
+          resolved = true;
+          cleanup();
+          resolve({ status: 'success' }); // Assume success after timeout
+        }
+      }, 5000);
+
+      // Append elements and submit
+      document.body.appendChild(iframe);
+      document.body.appendChild(form);
+      form.submit();
+
+    } catch (error) {
+      console.error('Google Sheets submission error:', error);
+      reject(error);
     }
+  });
+}
 
-    setupCharCounter('problem', 'problemCount', 300);
-    setupCharCounter('solution', 'solutionCount', 300);
+// Character counters
+function setupCharCounter(textareaId, counterId, maxLength) {
+  const textarea = document.getElementById(textareaId);
+  const counter = document.getElementById(counterId);
+  
+  if (textarea && counter) {
+    textarea.addEventListener('input', function() {
+      const length = this.value.length;
+      counter.textContent = `${length}/${maxLength}`;
+      
+      if (length > maxLength * 0.9) {
+        counter.style.color = '#dc3545';
+      } else if (length > maxLength * 0.7) {
+        counter.style.color = '#fd7e14';
+      } else {
+        counter.style.color = '#6c757d';
+      }
+    });
+  }
+}
 
-    // Phone number validation
-    document.getElementById('phone').addEventListener('input', function(e) {
+// Initialize character counters after DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  setupCharCounter('problem', 'problemCount', 300);
+  setupCharCounter('solution', 'solutionCount', 300);
+
+  // Phone number validation
+  const phoneInput = document.getElementById('phone');
+  if (phoneInput) {
+    phoneInput.addEventListener('input', function(e) {
       this.value = this.value.replace(/\D/g, '').substring(0, 10);
     });
+  }
 
-    // Form validation
-    function validateField(fieldId, errorId, validationFn) {
-      const field = document.getElementById(fieldId);
-      const error = document.getElementById(errorId);
-      
+  // Form validation
+  function validateField(fieldId, errorId, validationFn) {
+    const field = document.getElementById(fieldId);
+    const error = document.getElementById(errorId);
+    
+    if (field && error) {
       field.addEventListener('blur', function() {
         if (!validationFn(this.value)) {
           error.style.display = 'block';
-          this.style.borderColor = '#dc3545';
+          this.classList.add('invalid');
+          this.classList.remove('valid');
         } else {
           error.style.display = 'none';
-          this.style.borderColor = '#28a745';
+          this.classList.add('valid');
+          this.classList.remove('invalid');
+        }
+      });
+
+      field.addEventListener('input', function() {
+        if (this.classList.contains('invalid') && validationFn(this.value)) {
+          error.style.display = 'none';
+          this.classList.add('valid');
+          this.classList.remove('invalid');
         }
       });
     }
+  }
 
-    // Setup field validations
-    validateField('email', 'emailError', (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
-    validateField('phone', 'phoneError', (value) => /^[0-9]{10}$/.test(value));
+  // Setup field validations
+  validateField('founderName', 'founderNameError', (value) => value.trim().length >= 2);
+  validateField('email', 'emailError', (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value));
+  validateField('phone', 'phoneError', (value) => /^[0-9]{10}$/.test(value));
+  validateField('state', 'stateError', (value) => value.trim().length >= 2);
+  validateField('city', 'cityError', (value) => value.trim().length >= 2);
+  validateField('startupName', 'startupNameError', (value) => value.trim().length >= 2);
+  validateField('stage', 'stageError', (value) => value !== '');
+  validateField('focusArea', 'focusAreaError', (value) => value !== '');
+  validateField('problem', 'problemError', (value) => value.trim().length >= 10);
+  validateField('solution', 'solutionError', (value) => value.trim().length >= 10);
+  validateField('support', 'supportError', (value) => value !== '');
 
-    // Form submission
-    document.getElementById('registrationForm').addEventListener('submit', function(e) {
+  // Form submission with Google Sheets integration
+  const form = document.getElementById('registrationForm');
+  if (form) {
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
       
       const submitBtn = document.getElementById('submitBtn');
+      
+      if (!submitBtn) {
+        console.error('Submit button not found');
+        return;
+      }
+      
+      // Store original text
+      const originalText = submitBtn.textContent;
+      
+      // Disable button and show loading
       submitBtn.disabled = true;
       submitBtn.textContent = 'Submitting...';
       
-      // Simulate form submission
-      setTimeout(() => {
-        alert('Application submitted successfully! We will review your application and get back to you within 5-7 business days.');
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Submit Application';
+      try {
+        const formData = new FormData(this);
+        
+        // Validate required fields
+        const requiredFields = ['founderName', 'email', 'phone', 'state', 'city', 'startupName', 'stage', 'focusArea', 'problem', 'solution', 'support'];
+        let isValid = true;
+        
+        for (let field of requiredFields) {
+          const value = formData.get(field);
+          const fieldElement = document.getElementById(field);
+          const errorElement = document.getElementById(field + 'Error');
+          
+          if (!value || value.trim() === '') {
+            isValid = false;
+            if (errorElement) {
+              errorElement.style.display = 'block';
+            }
+            if (fieldElement) {
+              fieldElement.classList.add('invalid');
+            }
+          }
+        }
+        
+        if (!isValid) {
+          throw new Error('Please fill in all required fields');
+        }
+        
+        // Submit to Google Sheets
+        await submitToGoogleSheets(formData);
+        
+        // Success
+        showNotification('Application submitted successfully! We will review your application and get back to you within 5-7 business days.', 'success');
+        
+        // Reset form
         this.reset();
         
         // Reset character counters
-        document.getElementById('problemCount').textContent = '0/300';
-        document.getElementById('solutionCount').textContent = '0/300';
-      }, 2000);
+        const problemCount = document.getElementById('problemCount');
+        const solutionCount = document.getElementById('solutionCount');
+        
+        if (problemCount) problemCount.textContent = '0/300';
+        if (solutionCount) solutionCount.textContent = '0/300';
+        
+        // Remove validation classes
+        const allFields = this.querySelectorAll('input, select, textarea');
+        allFields.forEach(field => {
+          field.classList.remove('valid', 'invalid');
+        });
+        
+      } catch (error) {
+        console.error('Submission error:', error);
+        showNotification('There was an error submitting your application. Please try again.', 'error');
+      } finally {
+        // Re-enable button and restore original text
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+      }
     });
-  </script>
+  }
+});
+</script> 
 
   
   <footer class="footer">
